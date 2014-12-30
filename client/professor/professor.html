@@ -1,0 +1,85 @@
+
+<template name="professorForm">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{i18n 'dados.gerais'}}</h3>
+    </div>
+    <div class="panel-body">
+      {{flash}}
+      {{> quickForm collection="Professores" id="insertProfessorForm"
+      type="insert" buttonContent="Salvar" omitFields="createdBy,disponibilidade" }}
+    </div>
+  </div>
+</template>
+
+<template name="professorFormEdit">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{i18n 'dados.gerais'}}</h3>
+    </div>
+    <div class="panel-body">
+      {{flash}}
+      {{> quickForm collection="Professores" doc=getProfessorToEdit id="insertProfessorFormEdit"
+      type="update" buttonContent="Salvar"  omitFields="createdAt,disponibilidade" }}
+    </div>
+  </div>
+
+  {{> professorHorario }}
+</template>
+
+<template name="professorList">
+  {{flash}}
+  {{> reactiveTable collection=listarProfessores fields=fieldsTable}}
+</template>
+
+<template name="professorHorario">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{i18n "disponibilidade"}}</h3>
+    </div>
+    <div class="panel-body">
+      {{flash 'flashHorarios'}}
+      <form id="formDias" method="post">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                {{i18n "periodo"}}
+              </th>
+              {{#each diasSemana}}
+                <th>
+                  {{this.value}}
+                </th>
+              {{/each}}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                1
+              </td>
+              {{#each diasSemana}}
+                <td>
+                    <input value="{{this.key}}" p="1" type="checkbox" autocomplete="off" checked="{{isChecked this.key 1}}">
+                </td>
+              {{/each}}
+            </tr>
+            <tr>
+              <td>
+                2
+              </td>
+              {{#each diasSemana}}
+              <td>
+                <input value="{{this.key}}" p="2" type="checkbox" autocomplete="off" checked="{{isChecked this.key 2}}">
+              </td>
+              {{/each}}
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">
+          Salvar
+        </button>
+      </form>
+    </div>
+  </div>
+</template>

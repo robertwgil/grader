@@ -1,0 +1,26 @@
+<template name="editButtonInTable">
+  <button class="edit btn btn-info btn-xs"><i class="glyphicon glyphicon-pencil"></i> {{i18n 'editar'}}</button>
+</template>
+
+<template name="removeButtonInTable">
+  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modalRemoveId{{_id}}">
+    <i class="glyphicon glyphicon-remove"></i> {{i18n 'remover'}}
+  </button>
+
+  <div class="modal fade" id="modalRemoveId{{_id}}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{i18n 'attention'}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{i18n 'confirm.remove' }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cancelar" data-dismiss="modal">{{i18n 'cancelar'}}</button>
+          <button type="button" class="btn btn-danger remove">{{i18n 'confirmar'}}</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</template>
