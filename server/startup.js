@@ -1,6 +1,6 @@
 Meteor.startup(function(){
 
-  var rgil = Meteor.users.findOne({username: 'rgil@gmail.com'})
+  var rgil = Meteor.users.findOne(({emails: [ {address: 'robertwgil@gmail.com', verified: false}] }));
 
   if(rgil == null){
     var user = {
