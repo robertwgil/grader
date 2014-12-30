@@ -36,7 +36,7 @@ Template.turmaList.events({
   'click .remove': function(){
     Meteor.call("deleteTurma", this._id, function(error, result){
       if(error){
-        Flash.success("Falha ao remover registro!");
+        Flash.danger("Falha ao remover registro!");
       }
       if(result){
         Flash.success("Registro removido com sucesso!");
