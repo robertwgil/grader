@@ -5,3 +5,7 @@ Meteor.publish("professores", function(){
 Meteor.publish("turmas", function(){
   return Turmas.find({});
 });
+
+Meteor.publish("disciplinas", function(){
+  return Disciplinas.find({});
+});

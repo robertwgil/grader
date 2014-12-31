@@ -34,7 +34,7 @@
 
         {{#if isInRole 'admin'}}
           <li>
-            <a href="javascript:;" data-toggle="collapse" data-target='#professor'>
+            <a href="#" data-toggle="collapse" data-target='#professor'>
               <i class="fa fa-fw fa-arrows-v"></i> {{i18n 'menu.professor'}} <i class="fa fa-fw fa-caret-down"></i>
             </a>
 
@@ -49,7 +49,7 @@
           </li>
 
           <li>
-            <a href="javascript:;" data-toggle="collapse" data-target='#turma'>
+            <a href="#" data-toggle="collapse" data-target='#turma'>
               <i class="fa fa-fw fa-arrows-v"></i> {{i18n 'menu.turma'}} <i class="fa fa-fw fa-caret-down"></i>
             </a>
 
@@ -62,6 +62,22 @@
               </li>
             </ul>
           </li>
+
+          <li>
+            <a href="#" data-toggle="collapse" data-target='#disciplina'>
+              <i class="fa fa-fw fa-arrows-v"></i> {{i18n 'menu.disciplina'}} <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+
+            <ul id="disciplina" class="collapse">
+              <li>
+                <a href="{{pathFor 'disciplinaForm'}}">{{i18n 'novo'}}</a>
+              </li>
+              <li>
+                <a href="{{pathFor 'disciplinaList'}}">{{i18n 'listar'}}</a>
+              </li>
+            </ul>
+          </li>
+
         {{/if}}
 
         <li>

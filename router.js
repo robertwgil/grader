@@ -74,5 +74,23 @@ Router.map(function(){
     }
   });
 
+  // ################
+  // DISCIPLINA
+  // ################
+  this.route('disciplinaForm', {path: 'disciplina/nova', data: {title: 'Adicionar Disciplina'}});
+
+  this.route('disciplinaFormEdit', {
+    path: 'disciplina/editar/:_id',
+    data: {title: 'Editar Disciplina'}
+  });
+
+  this.route('disciplinaList', {
+    path: 'disciplina/listar',
+    data: {title: 'Listagem de Disciplina'},
+    waitOn: function(){
+      subs.subscribe('disciplinas');
+    }
+  });
+
 
 });

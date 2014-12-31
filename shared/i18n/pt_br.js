@@ -24,7 +24,8 @@ i18n.map('pt-br', {
     professor : 'Professor',
     sair: 'Sair',
     adminusers: 'Usuários',
-    turma: 'Turma'
+    turma: 'Turma',
+    disciplina: 'Disciplina'
   },
   semana: {
     segunda: 'Segunda',

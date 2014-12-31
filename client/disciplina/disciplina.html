@@ -1,0 +1,31 @@
+
+<template name="disciplinaForm">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{i18n 'dados.gerais'}}</h3>
+    </div>
+    <div class="panel-body">
+      {{flash}}
+      {{> quickForm collection="Disciplinas" id="disciplinaForm"
+      type="insert" buttonContent="Salvar" omitFields="createdBy" }}
+    </div>
+  </div>
+</template>
+
+<template name="disciplinaFormEdit">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{i18n 'dados.gerais'}}</h3>
+    </div>
+    <div class="panel-body">
+      {{flash}}
+      {{> quickForm collection="Disciplinas" doc=getToEdit id="disciplinaFormEdit"
+      type="update" buttonContent="Salvar"  omitFields="createdAt" }}
+    </div>
+  </div>
+</template>
+
+<template name="disciplinaList">
+  {{flash}}
+  {{> reactiveTable collection=listar fields=fieldsTable}}
+</template>
