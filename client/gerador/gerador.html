@@ -1,0 +1,99 @@
+<template name="gerador">
+  <div class="col-md-3">
+    {{> geradorSide}}
+  </div>
+
+  <h4 class="col-md-9 header">{{grade.name}} {{grade.year}}/{{grade.semester}}</h4>
+
+  <div class="panel-group col-md-9" id="accordion" role="tablist" aria-multiselectable="true">
+    {{#each aulasGradeGrouped}}
+      {{> panelByProfessor}}
+    {{/each}}
+  </div>
+
+</template>
+
+<template name="geradorSide">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingProfessores">
+      <h3 class="panel-title">
+        <a href="#collapseProfessores" data-toggle="collapse" aria-controls="collapseProfessores" aria-expanded="true">Professores</a>
+      </h3>
+    </div>
+    <div class="panel-collapse collapse in" id="collapseProfessores" role="tabpanel" aria-labelledby="headingProfessores">
+      <ul class="list-group">
+        {{#each professores}}
+          <li class="list-group-item" draggable="true">
+            {{name}}
+            <span class="glyphicon glyphicon-plus addAula pointer" style='float:right;'></span>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingDisciplinas">
+      <h3 class="panel-title">
+        <a href="#collapseDisciplinas" data-toggle="collapse" aria-controls="collapseDisciplinas" aria-expanded="true">Disciplinas</a>
+      </h3>
+    </div>
+    <div class="panel-collapse collapse in" id="collapseDisciplinas" role="tabpanel" aria-labelledby="headingDisciplinas">
+      <ul class="list-group">
+        {{#each disciplinas}}
+        <li class="list-group-item liDisciplina" draggable="true">{{name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTurmas">
+      <h3 class="panel-title">
+        <a href="#collapseTurmas" data-toggle="collapse" aria-controls="collapseTurmas" aria-expanded="true">Turmas</a>
+      </h3>
+    </div>
+    <div class="panel-collapse collapse in" id="collapseTurmas" role="tabpanel" aria-labelledby="headingTurmas">
+      <ul class="list-group">
+        {{#each turmas}}
+        <li class="list-group-item liTurma" draggable="true">{{name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+</template>
+
+<template name="panelByProfessor">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading{{this}}">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse{{this}}" aria-controls="collapse{{this}}"
+           aria-expanded="true">
+            {{nomeProfessor this}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{this}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{this}}">
+      <div class="panel-body">
+        {{#each aulasGradeByProfessor this}}
+          {{> aula}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="aula">
+  <ul class="list-group col-md-4 ulAula">
+    <li class="list-group-item">
+      {{nomeDisciplina id_disciplina}}
+      <span class="badge" style="cursor:pointer">{{qtd_aulas}}</span>
+    </li>
+    <li class="list-group-item">
+      {{nomeTurma id_turma}}
+      <span class="glyphicon glyphicon-remove removerAula right pointer" title="{{i18n 'remover.aula'}}" aria-hidden="true"></span>
+    </li>
+  </ul>
+</template>

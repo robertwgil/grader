@@ -25,7 +25,8 @@ i18n.map('pt-br', {
     sair: 'Sair',
     adminusers: 'Usuários',
     turma: 'Turma',
-    disciplina: 'Disciplina'
+    disciplina: 'Disciplina',
+    grade: 'Grade'
   },
   semana: {
     segunda: 'Segunda',
@@ -33,7 +34,9 @@ i18n.map('pt-br', {
     quarta: 'Quarta',
     quinta: 'Quinta',
     sexta: 'Sexta'
-  }
+  },
+  'abrir.gerador': 'Abrir Gerador',
+  'remover.aula': 'Remover Aula'
 });
 
 i18n.setDefaultLanguage('pt-br');

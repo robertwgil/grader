@@ -36,7 +36,6 @@ Router.map(function(){
 
   this.route('home', {path: '/', data: {title: 'Home'} });
 
-
   // ################
   // PROFESSOR
   // ################
@@ -92,5 +91,39 @@ Router.map(function(){
     }
   });
 
+  // ################
+  // GRADE
+  // ################
+  this.route('gradeForm', {path: 'grade/nova', data: {title: 'Criar Grade'}});
+
+  this.route('gradeFormEdit', {
+    path: 'grade/editar/:_id',
+    data: {title: 'Editar Grade'}
+  });
+
+  this.route('gradeList', {
+    path: 'grade/listar',
+    data: {title: 'Listagem de Grades'},
+    waitOn: function(){
+      subs.subscribe('grades');
+    }
+  });
+
+
+  // ################
+  // GERADOR
+  // ################
+  this.route('gerador', {
+    path: '/gerador/grade/:_id',
+    data: {
+      title: 'Gerador'
+    },
+    waitOn: function(){
+      subs.subscribe('professores');
+      subs.subscribe('turmas');
+      subs.subscribe('disciplinas');
+      subs.subscribe('aulas_grade');
+    }
+  });
 
 });

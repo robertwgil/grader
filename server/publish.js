@@ -9,3 +9,11 @@ Meteor.publish("turmas", function(){
 Meteor.publish("disciplinas", function(){
   return Disciplinas.find({});
 });
+
+Meteor.publish("grades", function(){
+  return Grades.find({});
+});
+
+Meteor.publish("aulas_grade", function(){
+  return AulasGrade.find({});
+});

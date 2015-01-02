@@ -42,6 +42,7 @@ jquery@1.0.2
 json@1.0.2
 launch-screen@1.0.1
 less@1.0.12
+linto:jquery-ui@1.11.2
 livedata@1.0.12
 localstorage@1.0.2
 logging@1.0.6
