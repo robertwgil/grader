@@ -1,5 +1,7 @@
 i18n.map('pt-br', {
   'invalid.username': 'Usuário ou senha inválidos!',
+  processando: 'Processando...',
+  visualizar: 'Visualizar',
   name: 'Nome',
   sexo: 'Sexo',
   remover: 'Remover',

@@ -1,0 +1,20 @@
+<template name="gradesSolicitadas">
+
+  {{> reactiveTable collection=listarGradesSolicitadas fields=fieldsTable}}
+
+</template>
+
+<template name="statusGeracao">
+  {{#if result}}
+    <a class="btn btn-primary btn-xs" href="{{pathFor 'viewGrade'}}">
+      <span class="glyphicon glyphicon-eye-open"></span>
+      {{i18n 'visualizar'}}
+    </a>
+  {{else}}
+    {{i18n 'processando'}}
+  {{/if}}
+</template>
+
+<template name="viewGrade">
+  <h3>Grades Geradas</h3>
+</template>

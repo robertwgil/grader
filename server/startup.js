@@ -1,3 +1,4 @@
+
 Meteor.startup(function(){
 
   var rgil = Meteor.users.findOne(({emails: [ {address: 'robertwgil@gmail.com', verified: false}] }));
@@ -14,6 +15,5 @@ Meteor.startup(function(){
     var userNew = Accounts.createUser(user);
     Roles.addUsersToRoles(userNew, ['admin'])
   }
-
 
 });

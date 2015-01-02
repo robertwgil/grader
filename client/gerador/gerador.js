@@ -88,5 +88,14 @@ Template.aula.events({
       AulasGrade.update({_id: this._id}, {$set: {id_turma: id}});
     }
   }
+});
 
+Template.gerador.events({
+  "click #gerarGrade": function(event, template){
+
+    var idGrade = $(event.target).attr('grade');
+
+    Meteor.call("processarGrade", idGrade);
+
+  }
 });

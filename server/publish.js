@@ -17,3 +17,7 @@ Meteor.publish("grades", function(){
 Meteor.publish("aulas_grade", function(){
   return AulasGrade.find({});
 });
+
+Meteor.publish("grades_processadas", function(){
+  return GradesProcessadas.find({});
+});

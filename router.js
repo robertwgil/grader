@@ -34,7 +34,14 @@ Router.map(function(){
     }
   });
 
-  this.route('home', {path: '/', data: {title: 'Home'} });
+  this.route('home', {
+    path: '/',
+    data: {title: 'Home'},
+    waitOn: function(){
+      subs.subscribe('grades');
+      subs.subscribe('grades_processadas');
+    }
+  });
 
   // ################
   // PROFESSOR
@@ -123,6 +130,13 @@ Router.map(function(){
       subs.subscribe('turmas');
       subs.subscribe('disciplinas');
       subs.subscribe('aulas_grade');
+    }
+  });
+
+  this.route('viewGrade', {
+    path: '/grade/visualizar/:_id',
+    data: {
+      title: 'Grade Processada'
     }
   });
 
