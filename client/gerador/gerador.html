@@ -10,14 +10,14 @@
   </h4>
 
   <div class="panel-group col-md-9" id="accordion" role="tablist" aria-multiselectable="true">
-    {{#each aulasGradeGrouped}}
-      {{> panelByProfessor}}
+    {{flash}}
+    {{#each aulasGradeGrouped grade._id}}
+      {{> panelByProfessor idProfessor=this idGrade=grade._id}}
     {{/each}}
   </div>
 </template>
 
 <template name="geradorSide">
-
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingProfessores">
       <h3 class="panel-title">
@@ -73,17 +73,18 @@
 
 <template name="panelByProfessor">
   <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="heading{{this}}">
+    <div class="panel-heading" role="tab" id="heading{{idProfessor}}">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse{{this}}" aria-controls="collapse{{this}}"
+        <a data-toggle="collapse" href="#collapse{{idProfessor}}" aria-controls="collapse{{idProfessor}}"
            aria-expanded="true">
-           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{nomeProfessor this}}
+           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{nomeProfessor idProfessor}}
+           <span style="float: right;">{{printCapacity idProfessor idGrade}}</span>
         </a>
       </h4>
     </div>
-    <div id="collapse{{this}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{this}}">
+    <div id="collapse{{idProfessor}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{idProfessor}}">
       <div class="panel-body">
-        {{#each aulasGradeByProfessor this}}
+        {{#each aulasGradeByProfessor idProfessor idGrade}}
           {{> aula}}
         {{/each}}
       </div>

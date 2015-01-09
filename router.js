@@ -137,6 +137,12 @@ Router.map(function(){
     path: '/grade/visualizar/:_id',
     data: {
       title: 'Grade Processada'
+    },
+    waitOn: function(){
+      subs.subscribe('professores');
+      subs.subscribe('turmas');
+      subs.subscribe('disciplinas');
+      subs.subscribe('aulas_grade');
     }
   });
 

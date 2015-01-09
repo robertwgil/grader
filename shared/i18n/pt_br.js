@@ -38,7 +38,8 @@ i18n.map('pt-br', {
     sexta: 'Sexta'
   },
   'abrir.gerador': 'Abrir Gerador',
-  'remover.aula': 'Remover Aula'
+  'remover.aula': 'Remover Aula',
+  'grade': 'Grade'
 });
 
 i18n.setDefaultLanguage('pt-br');

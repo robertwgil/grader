@@ -11,10 +11,64 @@
       {{i18n 'visualizar'}}
     </a>
   {{else}}
-    {{i18n 'processando'}}
+    <a class="btn btn-warning btn-xs" href="{{pathFor 'viewGrade'}}">
+      <span class="glyphicon glyphicon-eye-open"></span>
+      {{i18n 'visualizar'}}
+    </a>
   {{/if}}
 </template>
 
 <template name="viewGrade">
-  <h3>Grades Geradas</h3>
+
+  {{#with getGrade}}
+    <p>
+      {{name}} {{year}}/{{semester}}
+    </p>
+  {{/with}}
+
+  {{#each getTurmas}}
+    <table class="table table-bordered">
+      <caption>{{nomeTurma this}}</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th>{{i18n 'semana.segunda'}}</th>
+          <th>{{i18n 'semana.terca'}}</th>
+          <th>{{i18n 'semana.quarta'}}</th>
+          <th>{{i18n 'semana.quinta'}}</th>
+          <th>{{i18n 'semana.sexta'}}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{i18n 'periodo'}} 1</td>
+          <td>{{> montaAula turma=this periodo=1 dia=1}}</td>
+          <td>{{> montaAula turma=this periodo=1 dia=2}}</td>
+          <td>{{> montaAula turma=this periodo=1 dia=3}}</td>
+          <td>{{> montaAula turma=this periodo=1 dia=4}}</td>
+          <td>{{> montaAula turma=this periodo=1 dia=5}}</td>
+        </tr>
+        <tr>
+          <td>{{i18n 'periodo'}} 2</td>
+          <td>{{> montaAula turma=this periodo=2 dia=1}}</td>
+          <td>{{> montaAula turma=this periodo=2 dia=2}}</td>
+          <td>{{> montaAula turma=this periodo=2 dia=3}}</td>
+          <td>{{> montaAula turma=this periodo=2 dia=4}}</td>
+          <td>{{> montaAula turma=this periodo=2 dia=5}}</td>
+        </tr>
+      </tbody>
+    </table>
+  {{/each}}
+</template>
+
+<template name="montaAula">
+  {{#with getAula turma periodo dia}}
+    {{#if id_professor}}
+      <ul class="list-group">
+        <li class="list-group-item">{{nomeProfessor id_professor}}</li>
+        <li class="list-group-item">{{nomeDisciplina id_disciplina}}</li>
+      </ul>
+    {{/if}}
+  {{/with}}
 </template>

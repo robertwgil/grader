@@ -5,7 +5,8 @@ SchemaGradesProcessadas = new SimpleSchema({
     type: String
   },
   result: {
-    type: Object
+    type: Object,
+    optional: true
   }
 });
 

@@ -62,7 +62,7 @@ AutoForm.addHooks(['insertGradeForm', 'insertGradeFormEdit'], {
         Flash.danger("Falha ao salvar registro");
       } else {
         Flash.success("Registro salvo com sucesso!");
-        Router.go('gradeFormEdit', {_id: result})
+        Router.go('gerador', {_id: result});
       }
     },
     update: function(error) {

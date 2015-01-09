@@ -12,8 +12,7 @@ Template.professorList.helpers({
       { key: 'name', label: 'Nome' },
       { key: 'email', label: 'Email' },
       { key: 'sexo', label: 'Sexo' },
-      { label: '', tmpl: Template.editButtonInTable },
-      { label: '', tmpl: Template.removeButtonInTable }
+      { label: '', tmpl: Template.editButtonInTable }
     ]
   }
 
