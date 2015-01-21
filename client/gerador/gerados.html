@@ -21,12 +21,19 @@
 <template name="viewGrade">
 
   {{#with getGrade}}
-    <p>
+    <p class="col-sm-2">
       {{name}} {{year}}/{{semester}}
     </p>
+
+    {{#with getGradeProcessada}}
+      {{> statusGeracaoGrade}}
+    {{/with}}
+
   {{/with}}
 
-  {{#each getTurmas}}
+  {{#if getGradeProcessada.result}}
+
+    {{#each getTurmas}}
     <table class="table table-bordered">
       <caption>{{nomeTurma this}}</caption>
       <thead>
@@ -59,7 +66,9 @@
         </tr>
       </tbody>
     </table>
-  {{/each}}
+    {{/each}}
+
+  {{/if}}
 </template>
 
 <template name="montaAula">
@@ -71,4 +80,26 @@
       </ul>
     {{/if}}
   {{/with}}
+</template>
+
+<template name="statusGeracaoGrade">
+  <p class="col-sm-2">
+    {{i18n 'cenarios'}}: {{steps}}
+  </p>
+  {{#if startProcessAt}}
+  <p class="col-sm-3">
+    {{i18n 'data.inicio.processamento'}}: {{dateTime startProcessAt}}
+  </p>
+  {{/if}}
+  {{#if processedAt}}
+    <p class="col-sm-3">
+      {{i18n 'data.termino.processamento'}}: {{dateTime processedAt}}
+    </p>
+  {{/if}}
+  {{#if bestScore}}
+  <p class="col-sm-2">
+    {{i18n 'score'}}: {{bestScore}}
+  </p>
+  {{/if}}
+
 </template>

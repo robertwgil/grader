@@ -39,7 +39,12 @@ i18n.map('pt-br', {
   },
   'abrir.gerador': 'Abrir Gerador',
   'remover.aula': 'Remover Aula',
-  'grade': 'Grade'
+  'grade': 'Grade',
+  'data.termino.processamento': 'Concluído em',
+  'cenarios': 'Cenários',
+  'data.inicio.processamento': 'Iniciado em',
+  score: 'Score',
+  'sem.slots': 'A soma de todos horários possíveis dos professores que ministram aulas para esta turma não são mais suficientes para alocar mais aulas para esta turma.'
 });
 
 i18n.setDefaultLanguage('pt-br');

@@ -11,6 +11,36 @@ Template.geradorSide.helpers({
   },
   turmas: function(){
     return Turmas.find({});
+  },
+  slotsAula: function(){
+    var idGrade = Iron.controller().params._id;
+    var idTurma = this._id;
+
+    var professoresToTurma = [];
+
+    var usedSlotsByTurma = AulasGrade.find({id_grade: idGrade, id_turma: idTurma}).fetch();
+    var usedSlotsByTurma = _.reduce(usedSlotsByTurma, function(last, curr){
+
+      professoresToTurma.push(curr.id_professor);
+
+      // Para a mesma aula nao conta
+      if(curr._id == idGrade){
+        return last;
+      }
+
+      return last + curr.qtd_aulas;
+    }, 0);
+
+    professoresToTurma = _.uniq(professoresToTurma);
+    professoresToTurma = Professores.find({_id: {$in: professoresToTurma}}).fetch();
+
+    var count = _.chain(professoresToTurma)
+    .map(function(obj){ return obj.disponibilidade; })
+    .flatten()
+    .uniq(function(obj){ return obj.dia + '' + obj.periodo; })
+    .value();
+
+    return usedSlotsByTurma + ' / ' + count.length;
   }
 });
 
@@ -165,7 +195,7 @@ function checaStotDisponivel(idAulaGrade, idTurma, nMoreAulas){
   var moreAulas = nMoreAulas !== undefined ? nMoreAulas : aulaGrade.qtd_aulas;
 
   if(usedSlotsByTurma > 0 && (usedSlotsByTurma + moreAulas) > count.length) {
-    Flash.danger("Sem slots disponíveis.");
+    Flash.danger( i18n('sem.slots') );
     return false;
   }
 

@@ -19,5 +19,5 @@ Meteor.publish("aulas_grade", function(){
 });
 
 Meteor.publish("grades_processadas", function(){
-  return GradesProcessadas.find({});
+  return GradesProcessadas.find({}, {sort: {'createdAt': -1}});
 });

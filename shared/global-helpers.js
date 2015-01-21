@@ -18,3 +18,15 @@ UI.registerHelper("nomeDisciplina", function(_id){
 UI.registerHelper("nomeTurma", function(id){
   return Turmas.findOne({_id: id},{name: 1}).name;
 });
+
+UI.registerHelper("dateTime", function(date){
+  if(date){
+    return moment(date).format('DD/MM/YYYY HH:mm');
+  }
+});
+
+UI.registerHelper("date", function(date){
+  if(date) {
+    return moment(date).format('DD/MM/YYYY');
+  }
+});

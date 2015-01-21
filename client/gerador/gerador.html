@@ -63,7 +63,10 @@
     <div class="panel-collapse collapse in" id="collapseTurmas" role="tabpanel" aria-labelledby="headingTurmas">
       <ul class="list-group">
         {{#each turmas}}
-        <li class="list-group-item liTurma" draggable="true">{{name}}</li>
+        <li class="list-group-item liTurma" draggable="true">
+          {{name}}
+          <span class="badge">{{slotsAula}}</span>
+        </li>
         {{/each}}
       </ul>
     </div>
