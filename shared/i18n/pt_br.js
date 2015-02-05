@@ -44,7 +44,8 @@ i18n.map('pt-br', {
   'cenarios': 'Cenários',
   'data.inicio.processamento': 'Iniciado em',
   score: 'Score',
-  'sem.slots': 'A soma de todos horários possíveis dos professores que ministram aulas para esta turma não são mais suficientes para alocar mais aulas para esta turma.'
+  'sem.slots': 'A soma de todos horários possíveis dos professores que ministram aulas para esta turma não são mais suficientes para alocar mais aulas para esta turma.',
+  'disciplina.ja.ministrada': 'Este professor já ministra esta disciplina para esta turma.'
 });
 
 i18n.setDefaultLanguage('pt-br');

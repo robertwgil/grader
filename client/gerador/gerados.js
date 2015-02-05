@@ -37,7 +37,8 @@ Template.viewGrade.helpers({
         return item.id_turma;
       }).map(function(obj){
         return obj.id_turma;
-      });
+      }).sort();
+      
       return turmas;
     }
 

@@ -1,0 +1,8 @@
+@media print {
+
+  .page-break { page-break-inside:auto; page-break-before: always; }
+
+  .tableGrade {
+    width: 100%;
+  }
+}

@@ -23,11 +23,6 @@ Template.geradorSide.helpers({
 
       professoresToTurma.push(curr.id_professor);
 
-      // Para a mesma aula nao conta
-      if(curr._id == idGrade){
-        return last;
-      }
-
       return last + curr.qtd_aulas;
     }, 0);
 
@@ -100,12 +95,13 @@ Template.geradorSide.events({
       return;
     }
 
-      var aula = {
-        id_grade: idGrade,
-        id_professor: this._id,
-        qtd_aulas: 1
-      }
-      AulasGrade.insert(aula);
+    var aula = {
+      id_grade: idGrade,
+      id_professor: this._id,
+      qtd_aulas: 1
+    }
+    AulasGrade.insert(aula);
+
   },
   "dragstart .liDisciplina": function(event, template){
     event.originalEvent.dataTransfer.setData('id_disciplina', this._id);
@@ -148,13 +144,40 @@ Template.aula.events({
     var id = event.originalEvent.dataTransfer.getData('id_disciplina');
 
     if(id != ''){ // Setar a disciplina
-      AulasGrade.update({_id: this._id}, {$set: {id_disciplina: id}});
+
+      var toUpdate = AulasGrade.findOne({_id: this._id});
+
+      var count = AulasGrade.find({
+        id_grade: toUpdate.id_grade,
+        id_disciplina: id,
+        id_professor: toUpdate.id_professor,
+        id_turma: toUpdate.id_turma}
+      ).count();
+
+      if(count > 0) {
+        Flash.danger( i18n('disciplina.ja.ministrada') );
+      } else {
+        AulasGrade.update({_id: this._id}, {$set: {id_disciplina: id}});
+      }
 
     } else {  // Setar a Truma
       idTurma = event.originalEvent.dataTransfer.getData('id_turma');
 
-      if(checaStotDisponivel(this._id, idTurma)){
-        AulasGrade.update({_id: this._id}, {$set: {id_turma: idTurma}});
+
+      var toUpdate = AulasGrade.findOne({_id: this._id});
+      var count = AulasGrade.find({
+        id_grade: toUpdate.id_grade,
+        id_disciplina: toUpdate.id_disciplina,
+        id_professor: toUpdate.id_professor,
+        id_turma: idTurma}
+      ).count();
+
+      if(count > 0) {
+        Flash.danger( i18n('disciplina.ja.ministrada') );
+      } else {
+        if(checaStotDisponivel(this._id, idTurma)){
+          AulasGrade.update({_id: this._id}, {$set: {id_turma: idTurma}});
+        }
       }
 
     }

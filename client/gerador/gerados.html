@@ -34,8 +34,11 @@
   {{#if getGradeProcessada.result}}
 
     {{#each getTurmas}}
-    <table class="table table-bordered">
-      <caption>{{nomeTurma this}}</caption>
+    <div class="page-break"></div>
+    <table class="table table-bordered tableGrade">
+      <caption>
+        <h3>{{nomeTurma this}}</h3>
+      </caption>
       <thead>
         <tr>
           <th></th>
